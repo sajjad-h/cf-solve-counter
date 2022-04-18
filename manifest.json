@@ -1,0 +1,17 @@
+{
+    "name": "CF Solve Counter",
+    "version": "1.0.0",
+    "description": "CF Solve Counter",
+    "manifest_version": 3,
+    "author": "Sajjad Hossain",
+    "action":{
+        "default_popup": "popup.html",
+        "default_title": "CF Solve Counter"
+    },
+    "content_scripts": [
+        {
+            "js": [ "content.js" ],
+            "matches": [ "https://codeforces.com/profile/*" ]
+        }
+    ]
+}
