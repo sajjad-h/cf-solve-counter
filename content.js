@@ -19,6 +19,56 @@ function formatDate(date) {
 
 /** create a div */
 let mainDiv = document.createElement('div');
+mainDiv.setAttribute("class", "roundbox ");
+mainDiv.setAttribute("style", "padding:2em 1em 0 1em;margin-top:1em; height: 339px; width: 848px;");
+
+leftTopDiv = document.createElement("div");
+leftTopDiv.setAttribute("class", "roundbox-lt");
+leftTopDiv.setAttribute("style", "color: white;");
+leftTopDiv.innerText="&nbsp;";
+
+rightTopDiv = document.createElement("div");
+rightTopDiv.setAttribute("class", "roundbox-rt");
+rightTopDiv.setAttribute("style", "color: white;");
+rightTopDiv.innerText="&nbsp;";
+
+leftBottomDiv = document.createElement("div");
+leftBottomDiv.setAttribute("class", "roundbox-lb");
+leftBottomDiv.setAttribute("style", "color: white;");
+leftBottomDiv.innerText="&nbsp;";
+
+rightBottomDiv = document.createElement("div");
+rightBottomDiv.setAttribute("class", "roundbox-rb");
+rightBottomDiv.setAttribute("style", "color: white;");
+rightBottomDiv.innerText="&nbsp;";
+
+chartScriptTag = document.createElement("script");
+chartScriptTag.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js");
+chartScriptTag.setAttribute("type", "module");
+
+chartDiv = document.createElement('div');
+canvas = document.createElement("canvas");
+canvas.setAttribute("id", "solveCounterChart");
+canvas.setAttribute("style", "display: block; box-sizing: border-box; height: 339px; width: 848px;");
+canvas.setAttribute("width", "848");
+canvas.setAttribute("height", "339");
+
+chartDiv.appendChild(chartScriptTag);
+chartDiv.appendChild(canvas);
+
+
+{/* <div class="roundbox " style="padding:2em 1em 0 1em;margin-top:1em;" height="10">
+    <div class="roundbox-lt">&nbsp;</div>
+    <div class="roundbox-rt">&nbsp;</div>
+    <div class="roundbox-lb">&nbsp;</div>  
+    <div class="roundbox-rb">&nbsp;</div>
+    <h4>
+        Problem Ratings
+    </h4>
+    <div>
+        <canvas id="problemRatingChart" style="display: block; box-sizing: border-box; height: 339px; width: 848px;" width="848" height="339"></canvas>
+    </div>
+</div> */}
 
 /** create a heading */
 let mainHeading = document.createElement('h4');
@@ -33,8 +83,13 @@ table.setAttribute("border", "2");
 table.appendChild(thead);
 table.appendChild(tbody);
 
+mainDiv.appendChild(leftTopDiv);
+mainDiv.appendChild(rightTopDiv);
+mainDiv.appendChild(leftBottomDiv);
+mainDiv.appendChild(rightBottomDiv);
 mainDiv.appendChild(mainHeading);
 mainDiv.appendChild(table);
+mainDiv.appendChild(chartDiv);
 document.getElementById('pageContent').appendChild(mainDiv);
 
 /** table header making */
@@ -111,4 +166,30 @@ async function fetchData() {
     }
 }
 
+
+
+// var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+// var yValues = [55, 49, 44, 24, 15];
+// var barColors = ["red", "green","blue","orange","brown"];
+
+
+// import Chart from "vendor/chart";
+
+// new Chart("myChart", {
+//   type: "bar",
+//   data: {
+//     labels: xValues,
+//     datasets: [{
+//       backgroundColor: barColors,
+//       data: yValues
+//     }]
+//   },
+//   options: {
+//     legend: {display: false},
+//     title: {
+//       display: true,
+//       text: "World Wine Production 2018"
+//     }
+//   }
+// });
 fetchData();
